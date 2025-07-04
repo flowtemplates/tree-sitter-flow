@@ -1,0 +1,55 @@
+==================
+Text only
+==================
+Hello, world!
+---
+
+(source_file
+  (text))
+
+==================
+Simple expression
+==================
+Hello {{ name }}
+---
+
+(source_file
+  (text)
+  (expression
+    (identifier)))
+
+==================
+Multiple expressions and text
+==================
+Hi {{ first_name }} {{ last_name }}!
+---
+
+(source_file
+  (text)
+  (expression
+    (identifier))
+  (text)
+  (expression
+    (identifier))
+  (text))
+
+==================
+Underscore in identifier
+==================
+{{ user_name }}
+---
+
+(source_file
+  (expression
+    (identifier)))
+
+==================
+Digits in identifier
+==================
+{{ name123 }}
+---
+
+(source_file
+  (expression
+    (identifier)))
+

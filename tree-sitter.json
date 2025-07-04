@@ -1,0 +1,37 @@
+{
+	"$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
+	"grammars": [
+		{
+			"name": "flow",
+			"camelcase": "Flow",
+			"title": "Flow",
+			"scope": "source.flow",
+			"file-types": ["ft", "flow"],
+			"injection-regex": "^flow$",
+			"class-name": "TreeSitterFlow"
+		}
+	],
+	"metadata": {
+		"version": "0.1.0",
+		"license": "MIT",
+		"description": "Flow grammar for tree-sitter",
+		"authors": [
+			{
+				"name": "FlowTemplates Authors"
+			}
+		],
+		"links": {
+			"repository": "https://github.com/flowtemplates/tree-sitter-flow"
+		}
+	},
+	"bindings": {
+		"c": true,
+		"go": true,
+		"node": true,
+		"python": true,
+		"rust": true,
+		"swift": true,
+		"zig": false
+	}
+}
+
