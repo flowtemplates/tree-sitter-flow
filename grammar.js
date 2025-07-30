@@ -37,6 +37,7 @@ module.exports = grammar({
 
 		_primary_expression: $ =>
 			choice($._identifier, $._number_literal, $.string_literal),
+
 		binary_expression: $ =>
 			choice(
 				prec.right(8, seq($._expression, '**', $._expression)),
@@ -46,16 +47,12 @@ module.exports = grammar({
 				),
 				prec.left(6, seq($._expression, choice('+', '-'), $._expression)),
 			),
-
 		comparison_expression: $ =>
 			prec.left(5, seq($._expression, $.comparison_operators, $._expression)),
-
 		equality_expression: $ =>
 			prec.left(4, seq($._expression, choice('==', '!='), $._expression)),
-
 		identity_expression: $ =>
 			prec.left(4, seq($._expression, choice('is not', 'is'), $._expression)),
-
 		logical_expression: $ =>
 			choice(
 				prec.left(3, seq($._expression, choice('and', '&&'), $._expression)),
@@ -86,10 +83,8 @@ module.exports = grammar({
 		_identifier: $ => choice($.namespace_identifier, $.user_identifier),
 		_identifier_regexp: _ => /[a-zA-Z_][a-zA-Z_0-9]*/,
 		user_identifier: $ => $._identifier_regexp,
-		namespace_name: $ =>
-			seq(field('namespace_prefix', '@'), $._identifier_regexp),
-		namespace_value: $ =>
-			seq(field('namespace_separator', '::'), $._identifier_regexp),
+		namespace_name: $ => seq('@', $._identifier_regexp),
+		namespace_value: $ => seq('::', $._identifier_regexp),
 		namespace_identifier: $ =>
 			seq($.namespace_name, optional($.namespace_value)),
 	},
