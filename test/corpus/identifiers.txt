@@ -2,51 +2,57 @@
 Simple user identifier
 ===
 
-identifier
+{{ identifier }}
 
 ---
 
 (source_file
-    (user_identifier))
+    (expression_block
+    (user_identifier)))
 
 ===
 Simple namespace identifier
 ===
 
-@namespace
+{{ @namespace }}
 
 ---
 
 (source_file
+    (expression_block
     (namespace_identifier
-        (namespace_name)))
+        (namespace_name))))
 
 ===
 Namespace identifier with value
 ===
 
-@namespace::value
+{{ @namespace::value }}
 
 ---
 
 (source_file
+    (expression_block
     (namespace_identifier
         (namespace_name)
-        (namespace_value)))
+        (namespace_value))))
 
 ===
 Namespace identifier with value (specific)
 ===
 
+{{
 @namespace 
 :: 
 value
+}} 
 
 ---
 
 (source_file
+    (expression_block
     (namespace_identifier
         (namespace_name)
-        (namespace_value)))
+        (namespace_value))))
 
 

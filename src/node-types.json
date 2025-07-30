@@ -1,10 +1,5 @@
 [
   {
-    "type": "arithmetic_operators",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "binary_expression",
     "named": true,
     "fields": {},
@@ -191,6 +186,65 @@
     }
   },
   {
+    "type": "expression_block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "comparison_expression",
+          "named": true
+        },
+        {
+          "type": "equality_expression",
+          "named": true
+        },
+        {
+          "type": "float_literal",
+          "named": true
+        },
+        {
+          "type": "identity_expression",
+          "named": true
+        },
+        {
+          "type": "integer_literal",
+          "named": true
+        },
+        {
+          "type": "logical_expression",
+          "named": true
+        },
+        {
+          "type": "namespace_identifier",
+          "named": true
+        },
+        {
+          "type": "parenthesized_expression",
+          "named": true
+        },
+        {
+          "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
+        },
+        {
+          "type": "user_identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "identity_expression",
     "named": true,
     "fields": {},
@@ -248,11 +302,6 @@
         }
       ]
     }
-  },
-  {
-    "type": "identity_operators",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "logical_expression",
@@ -314,11 +363,6 @@
     }
   },
   {
-    "type": "logical_operators",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "namespace_identifier",
     "named": true,
     "fields": {},
@@ -340,12 +384,34 @@
   {
     "type": "namespace_name",
     "named": true,
-    "fields": {}
+    "fields": {
+      "namespace_prefix": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "@",
+            "named": false
+          }
+        ]
+      }
+    }
   },
   {
     "type": "namespace_value",
     "named": true,
-    "fields": {}
+    "fields": {
+      "namespace_separator": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "::",
+            "named": false
+          }
+        ]
+      }
+    }
   },
   {
     "type": "parenthesized_expression",
@@ -416,67 +482,7 @@
       "required": false,
       "types": [
         {
-          "type": "arithmetic_operators",
-          "named": true
-        },
-        {
-          "type": "binary_expression",
-          "named": true
-        },
-        {
-          "type": "comparison_expression",
-          "named": true
-        },
-        {
-          "type": "comparison_operators",
-          "named": true
-        },
-        {
-          "type": "equality_expression",
-          "named": true
-        },
-        {
-          "type": "float_literal",
-          "named": true
-        },
-        {
-          "type": "identity_expression",
-          "named": true
-        },
-        {
-          "type": "identity_operators",
-          "named": true
-        },
-        {
-          "type": "integer_literal",
-          "named": true
-        },
-        {
-          "type": "logical_expression",
-          "named": true
-        },
-        {
-          "type": "logical_operators",
-          "named": true
-        },
-        {
-          "type": "namespace_identifier",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
-          "named": true
-        },
-        {
-          "type": "string_literal",
-          "named": true
-        },
-        {
-          "type": "unary_expression",
-          "named": true
-        },
-        {
-          "type": "user_identifier",
+          "type": "expression_block",
           "named": true
         }
       ]
@@ -655,7 +661,15 @@
     "named": true
   },
   {
+    "type": "{{",
+    "named": false
+  },
+  {
     "type": "||",
+    "named": false
+  },
+  {
+    "type": "}}",
     "named": false
   }
 ]

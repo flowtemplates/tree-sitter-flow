@@ -9,7 +9,9 @@ module.exports = grammar({
 	name: 'flow',
 	rules: {
 		source_file: $ => repeat($._node),
-		_node: $ => choice($._expression, $._operators),
+		_node: $ => choice($.expression_block),
+
+		expression_block: $ => seq('{{', choice($._expression), '}}'),
 
 		_operators: $ =>
 			choice(
@@ -81,10 +83,15 @@ module.exports = grammar({
 		float_literal: _ => /[0-9]+\.[0-9]+/,
 
 		_identifier: $ => choice($.namespace_identifier, $.user_identifier),
-		_identifier_regexp: _ => /[a-zA-Z_][a-zA-Z_0-9]*/,
+		_identifier_regexp: _ => token(/[a-zA-Z_][a-zA-Z_0-9]*/),
 		user_identifier: $ => $._identifier_regexp,
-		namespace_name: $ => seq('@', $._identifier_regexp),
-		namespace_value: $ => seq('::', $._identifier_regexp),
+		namespace_name: $ =>
+			seq(field('namespace_prefix', '@'), field('name', $._identifier_regexp)),
+		namespace_value: $ =>
+			seq(
+				field('namespace_separator', '::'),
+				field('name', $._identifier_regexp),
+			),
 		namespace_identifier: $ =>
 			seq($.namespace_name, optional($.namespace_value)),
 	},
