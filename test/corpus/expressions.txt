@@ -1,55 +1,59 @@
-==================
-Text only
-==================
-Hello, world!
+===
+Simple binary expression
+===
+
+1 + 2
+
 ---
 
 (source_file
-  (text))
+    (binary_expression
+        (integer_literal)
+        (integer_literal)))
 
-==================
-Simple expression
-==================
-Hello {{ name }}
+===
+Complex expression with precedence
+===
+
+1 + 2 * 3
+
 ---
 
 (source_file
-  (text)
-  (expression
-    (identifier)))
+    (binary_expression
+        (integer_literal)
+        (binary_expression
+            (integer_literal)
+            (integer_literal))))
 
-==================
-Multiple expressions and text
-==================
-Hi {{ first_name }} {{ last_name }}!
+===
+Complex expression with minus integer in unary 
+===
+
+-1 + 2 * 3
+
 ---
 
 (source_file
-  (text)
-  (expression
-    (identifier))
-  (text)
-  (expression
-    (identifier))
-  (text))
+    (binary_expression
+        (unary_expression
+            (integer_literal))
+        (binary_expression
+            (integer_literal)
+            (integer_literal))))
 
-==================
-Underscore in identifier
-==================
-{{ user_name }}
+===
+Expression with parenthesized and binary expression
+===
+
+1 - (1 + 1)
+
 ---
 
 (source_file
-  (expression
-    (identifier)))
-
-==================
-Digits in identifier
-==================
-{{ name123 }}
----
-
-(source_file
-  (expression
-    (identifier)))
-
+    (binary_expression
+        (integer_literal)
+        (parenthesized_expression
+            (binary_expression
+                (integer_literal)
+                (integer_literal)))))

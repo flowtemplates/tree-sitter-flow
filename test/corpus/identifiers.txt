@@ -1,0 +1,52 @@
+===
+Simple user identifier
+===
+
+identifier
+
+---
+
+(source_file
+    (user_identifier))
+
+===
+Simple namespace identifier
+===
+
+@namespace
+
+---
+
+(source_file
+    (namespace_identifier
+        (namespace_name)))
+
+===
+Namespace identifier with value
+===
+
+@namespace::value
+
+---
+
+(source_file
+    (namespace_identifier
+        (namespace_name)
+        (namespace_value)))
+
+===
+Namespace identifier with value (specific)
+===
+
+@namespace 
+:: 
+value
+
+---
+
+(source_file
+    (namespace_identifier
+        (namespace_name)
+        (namespace_value)))
+
+

@@ -1,5 +1,8 @@
 * text=auto eol=lf
 
+# Dev
+node_moudules
+
 # Generated source files
 src/*.json linguist-generated
 src/parser.c linguist-generated
