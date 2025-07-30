@@ -37,7 +37,6 @@ module.exports = grammar({
 
 		_primary_expression: $ =>
 			choice($._identifier, $._number_literal, $.string_literal),
-
 		binary_expression: $ =>
 			choice(
 				prec.right(8, seq($._expression, '**', $._expression)),
@@ -72,7 +71,6 @@ module.exports = grammar({
 			),
 
 		parenthesized_expression: $ => seq('(', $._expression, ')'),
-
 		string_literal: _ =>
 			token(
 				choice(
@@ -88,8 +86,10 @@ module.exports = grammar({
 		_identifier: $ => choice($.namespace_identifier, $.user_identifier),
 		_identifier_regexp: _ => /[a-zA-Z_][a-zA-Z_0-9]*/,
 		user_identifier: $ => $._identifier_regexp,
-		namespace_name: $ => seq('@', $._identifier_regexp),
-		namespace_value: $ => seq('::', $._identifier_regexp),
+		namespace_name: $ =>
+			seq(field('namespace_prefix', '@'), $._identifier_regexp),
+		namespace_value: $ =>
+			seq(field('namespace_separator', '::'), $._identifier_regexp),
 		namespace_identifier: $ =>
 			seq($.namespace_name, optional($.namespace_value)),
 	},
