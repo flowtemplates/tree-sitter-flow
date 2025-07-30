@@ -88,11 +88,8 @@ module.exports = grammar({
 		_identifier: $ => choice($.namespace_identifier, $.user_identifier),
 		_identifier_regexp: _ => /[a-zA-Z_][a-zA-Z_0-9]*/,
 		user_identifier: $ => $._identifier_regexp,
-
 		namespace_name: $ => seq('@', $._identifier_regexp),
-
 		namespace_value: $ => seq('::', $._identifier_regexp),
-
 		namespace_identifier: $ =>
 			seq($.namespace_name, optional($.namespace_value)),
 	},
